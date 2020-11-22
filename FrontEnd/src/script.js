@@ -15,8 +15,7 @@ for (var i=0; i < lifts.length; i++) {
 
 document.querySelector('form button').addEventListener("click", (e) => {
     const params = {act: 'change', lift: selector.value, value: weight.value};
-    var query = "https://4twbzcqm75.execute-api.eu-west-2.amazonaws.com/Prod/skip/?";
+    var query = "https://df25skxur7.execute-api.eu-west-2.amazonaws.com/Prod/?";
     Object.keys(params).forEach(key => query += `${key}=${params[key]}&`);
-    query = query.slice(0, -1);
-    window.location.replace(query);
+    window.location.replace(query.slice(0, -1));
 });
