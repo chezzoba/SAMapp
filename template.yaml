@@ -24,7 +24,7 @@ Resources:
       Handler: app.lambda_handler
       CodeUri: lambda/
       Description: >-
-        A simple app with a RESTful API endpoint using Amazon API Gateway.
+        An app with a RESTful API endpoint using Amazon API Gateway.
       Timeout: 10
       Role: !GetAtt lambdaiamrole.Arn
       Events:
@@ -37,7 +37,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /skip
+            Path: /
             Method: get
 
   Table:

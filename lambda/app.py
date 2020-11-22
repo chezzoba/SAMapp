@@ -90,6 +90,17 @@ def put(lifdic):
     return dynamodb.batch_write_item(**params)
 
 
+try:
+    get()
+except IndexError:
+    put({"bench press":{"N":"82.5"},"bent over row":{"N":"77.5"},"deadlift":{"N":"130"},
+         "Endpoint":{"S":"4twbzcqm75.execute-api.eu-west-2.amazonaws.com"},"key":{"S":"stats"},
+         "overhead press":{"N":"60"},
+         "schedule":{"L":[{"S":"overhead press"},{"S":"squat"},{"S":"bent over row"},{"S":"bench press"},
+                          {"S":"squat"},{"S":"rest"},{"S":"deadlift"}]},"squat":{"N":"115"},
+         "test":{"N":"37"},"week":{"N":"5"}})
+
+
 def format(output):
     initial = '<h1 style="text-align: center">'
     final = '</h1>'
@@ -130,9 +141,9 @@ def lambda_handler(event, context):
         api = 'https://' + lifdic['Endpoint']['S']
         msg, new_lifdic = determine(lifdic)
         addendum = ['\n\n\n', 'Not going? Skip:', 
-        f"{api}/Prod/skip/?act=skip",
+        f"{api}/Prod/?act=skip",
         '\n', 'Clicked the above link by accident? Unskip:', 
-        f"{api}/Prod/skip/?act=unskip", '\n',
+        f"{api}/Prod/?act=unskip", '\n',
         "Want to change weights? Visit:",
         'http://531calc.s3-website.eu-west-2.amazonaws.com'
         '\n\n\n\n ']
