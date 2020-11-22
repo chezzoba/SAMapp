@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Notification Sending App
+Parameters:
+  Email:
+    Type: String
+Globals:
+  Function:
+    Runtime: python3.8
+    MemorySize: 128
+    Environment:
+      Variables:
+        DDB_TABLE:
+          Ref: Table
+        SNS_TOPIC:
+          Ref: Topic
+Resources:
+  lambdafunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_handler
+      CodeUri: s3://531calc/1bb39d31720cb62f006a6c7a1bf7118e
+      Description: A simple app with a RESTful API endpoint using Amazon API Gateway.
+      Timeout: 10
+      Role:
+        Fn::GetAtt:
+        - lambdaiamrole
+        - Arn
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? *)
+            Description: Invokes lambda function every day at 12AM
+            Enabled: true
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /skip
+            Method: get
+  Table:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: key
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+  Topic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+      - Endpoint:
+          Ref: Email
+        Protocol: email
+  lambdaiamrole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: /
+      Description: Allows Lambda to Use DynamoDB and SNS
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+      - arn:aws:iam::aws:policy/AmazonSNSFullAccess

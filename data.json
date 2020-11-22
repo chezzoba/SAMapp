@@ -1,0 +1,20 @@
+{
+    "bench press": 82.5,
+    "bent over row": 77.5,
+    "deadlift": 130,
+    "Endpoint": "4twbzcqm75.execute-api.eu-west-2.amazonaws.com",
+    "key": "stats",
+    "overhead press": 60,
+    "schedule": [
+      "overhead press",
+      "squat",
+      "bent over row",
+      "bench press",
+      "squat",
+      "rest",
+      "deadlift"
+    ],
+    "squat": 115,
+    "test": 37,
+    "week": 5
+  }
