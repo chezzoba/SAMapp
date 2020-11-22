@@ -145,7 +145,7 @@ def lambda_handler(event, context):
         '\n', 'Clicked the above link by accident? Unskip:', 
         f"{api}/Prod/?act=unskip", '\n',
         "Want to change weights? Visit:",
-        'http://531calc.s3-website.eu-west-2.amazonaws.com'
+        'https://531calc.s3.eu-west-2.amazonaws.com/index.html'
         '\n\n\n\n ']
         msg += '\n'.join(addendum)
         send_msg(msg)
