@@ -1,8 +1,5 @@
-h1 {
-    text-align: center;
-}
 
-.body {
+body {
     text-align: center;
 }
 
@@ -29,7 +26,13 @@ input {
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #810e05;
+	width: 150px;
 }
+
+.back {
+	visibility: hidden;
+} 
+
 .myButton:hover {
 	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
 	background-color:#c62d1f;

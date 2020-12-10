@@ -102,8 +102,8 @@ except IndexError:
 
 
 def format(output):
-    initial = '<h1 style="text-align: center">'
-    final = '</h1>'
+    initial = '<h3 style="text-align: center">'
+    final = '</h3>'
     return initial + output + final
 
 
@@ -116,13 +116,13 @@ def lambda_handler(event, context):
             first = liflist.pop(0)
             new_lst = liflist + [first]
             output = format('Unskipped successfully!')
-            output += f'<h3>New schedule: {[v["S"] for v in new_lst]}</h3>'
+            output += f'<h3>New schedule: {", ".join([v["S"] for v in new_lst])}</h3>'
             lifdic['schedule']['L'] = new_lst
         elif 'skip' in params['act']:
             last = liflist.pop()
             new_lst = [last] + liflist
             output = format('Skipped successfully!')
-            output += f'<h3>New schedule: {[v["S"] for v in new_lst]}</h3>'
+            output += f'<h3>New schedule: {", ".join([v["S"] for v in new_lst])}</h3>'
             lifdic['schedule']['L'] = new_lst
         elif 'change' in params['act']:
             try:
@@ -145,7 +145,7 @@ def lambda_handler(event, context):
         '\n', 'Clicked the above link by accident? Unskip:', 
         f"{api}/Prod/?act=unskip", '\n',
         "Want to change weights? Visit:",
-        'https://531calc.s3.eu-west-2.amazonaws.com/index.html'
+        'lift.kaizadwadia.com'
         '\n\n\n\n ']
         msg += '\n'.join(addendum)
         send_msg(msg)
@@ -156,5 +156,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': output,
         "headers": {
-            "Content-Type": "text/html"}
+            "Content-Type": "text/html",
+            'Access-Control-Allow-Origin': '*'
+        }
     }
