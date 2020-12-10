@@ -133,17 +133,15 @@ def lambda_handler(event, context):
                     output = format('Invalid values given for parameter lift or value')
             except KeyError:
                 output = format("Invalid lift:", params['lift'])
-
-        lifdic['Endpoint'] = {'S': event["requestContext"]["domainName"]}
         put(lifdic)
 
     else:
-        api = 'https://' + lifdic['Endpoint']['S']
+        api = 'https://liftapi.kaizadwadia.com'
         msg, new_lifdic = determine(lifdic)
         addendum = ['\n\n\n', 'Not going? Skip:', 
-        f"{api}/Prod/?act=skip",
+        f"{api}/?act=skip",
         '\n', 'Clicked the above link by accident? Unskip:', 
-        f"{api}/Prod/?act=unskip", '\n',
+        f"{api}/?act=unskip", '\n',
         "Want to change weights? Visit:",
         'lift.kaizadwadia.com'
         '\n\n\n\n ']

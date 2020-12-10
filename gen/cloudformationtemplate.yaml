@@ -19,7 +19,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: app.lambda_handler
-      CodeUri: s3://531calc/f8049b45a649be9d490442f0711885f1
+      CodeUri: s3://onlinecvk/adc4ff21f1bff2842930632638865f43
       Description: An app with a RESTful API endpoint using Amazon API Gateway.
       Timeout: 10
       Role:

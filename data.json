@@ -1,54 +1,78 @@
 {
-  "bench press": {
-    "N": "82.5"
+  "ddb": {
+    "bench press": {
+      "N": "82.5"
+    },
+    "bent over row": {
+      "N": "77.5"
+    },
+    "deadlift": {
+      "N": "130"
+    },
+    "Endpoint": {
+      "S": "4twbzcqm75.execute-api.eu-west-2.amazonaws.com"
+    },
+    "key": {
+      "S": "stats"
+    },
+    "overhead press": {
+      "N": "60"
+    },
+    "schedule": {
+      "L": [
+        {
+          "S": "overhead press"
+        },
+        {
+          "S": "squat"
+        },
+        {
+          "S": "bent over row"
+        },
+        {
+          "S": "bench press"
+        },
+        {
+          "S": "squat"
+        },
+        {
+          "S": "rest"
+        },
+        {
+          "S": "deadlift"
+        }
+      ]
+    },
+    "squat": {
+      "N": "115"
+    },
+    "test": {
+      "N": "37"
+    },
+    "week": {
+      "N": "5"
+    }
   },
-  "bent over row": {
-    "N": "77.5"
-  },
-  "deadlift": {
-    "N": "130"
-  },
-  "Endpoint": {
-    "S": "4twbzcqm75.execute-api.eu-west-2.amazonaws.com"
-  },
-  "key": {
-    "S": "stats"
-  },
-  "overhead press": {
-    "N": "60"
-  },
-  "schedule": {
-    "L": [
-      {
-        "S": "overhead press"
-      },
-      {
-        "S": "squat"
-      },
-      {
-        "S": "bent over row"
-      },
-      {
-        "S": "bench press"
-      },
-      {
-        "S": "squat"
-      },
-      {
-        "S": "rest"
-      },
-      {
-        "S": "deadlift"
-      }
-    ]
-  },
-  "squat": {
-    "N": "115"
-  },
-  "test": {
-    "N": "37"
-  },
-  "week": {
-    "N": "5"
+
+  "json": {
+    "bench press": 87.5,
+    "bent over row": 85,
+    "deadlift": 130,
+    "Endpoint": "df25skxur7.execute-api.eu-west-2.amazonaws.com",
+    "key": "stats",
+    "overhead press": 62.5,
+    "rest": 0,
+    "schedule": [
+      "overhead press",
+      "squat",
+      "bent over row",
+      "bench press",
+      "squat",
+      "rest",
+      "deadlift"
+    ],
+    "squat": 117.5,
+    "test": 61,
+    "week": 1
   }
 }

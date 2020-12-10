@@ -18,7 +18,7 @@ for (var i = 0; i < lifts.length; i++) {
   selector.appendChild(opt);
 }
 
-var query = "https://df25skxur7.execute-api.eu-west-2.amazonaws.com/Prod/?";
+var query = "https://liftapi.kaizadwadia.com/?";
 
 document.querySelector("form button").addEventListener("click", async (e) => {
   const params = { act: "change", lift: selector.value, value: weight.value };
